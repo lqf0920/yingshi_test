@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        function testGet() {
+            var val = $('#inputVal').val()
+            axios.get("/test/get2?param="+val).then(response => {  //获得回调数据
+                console.log(response.data);
+                window.alert(response.data)
+            })
+        }
+
+        function axios({  // 封装axios请求对象
+            url,
+            method = 'GET',  //默认值为get
+            params = {},   //默认为空
+            data = {}
+        }) {
+            // 返回一个Promise对象
+            return new Promise(((resolve, reject) => {
+                //1.执行异步ajax请求
+                //1.1创建xhr对象
+                const request = new XMLHttpRequest();
+                //1.2打开连接（初始化请求）
+                request.open(method, url, true)
+                //1.3发送请求
+                request.send()
+                //2.请求成功，调用resolve，失败调用reject
+
+
+            }))
+        }
+    </script>
+</head>
+<body>
+  <h1>Is life always this hard?</h1>
+  <input type="text" id="inputVal"/>
+  <button onclick="testGet()">Get</button>
+</body>
+</html>

@@ -4,11 +4,7 @@ import com.example.yingshi_test.entity.AccessToken;
 import com.example.yingshi_test.param.AccessTokenParam;
 import com.example.yingshi_test.service.YingshiService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,6 +26,10 @@ public class YingshiController {
     }
 
     //测试接收x-www-form-urlencoded格式数据
+    /*
+    * x-www-form-urlencoded格式数据等同于：
+    * https://open.ys7.com/api/lapp/token/get?appKey=04c84edbcca84fb584681802e4df78f3&appSecret=036cd44d88b5961e5c21f76a573230ca
+    * */
     @GetMapping("/test")
     public String test(@RequestBody String param) {
         System.out.println("接收到参数为："+ param);
